@@ -1,0 +1,166 @@
+/* ==========================================================================
+   tokens.css: Design tokens. Mirror of Design.md §2–§8. Do not hardcode
+   visual values elsewhere when a token exists.
+   ========================================================================== */
+:root {
+  /* ---- Primitives (from reference CSS) ---- */
+  --lime-500: #c9f13e;
+  --lime-400: #d8fa50;
+  --lime-100: #ebffb6;
+  --navy-900: #01233e;
+  --navy-800: #042644;
+  --navy-700: #032f5f;
+  --navy-600: #034275;
+  --ink-1000: #000000;
+  --ink-900: #0a0a0a;
+  --ink-800: #1b1b1b;
+  --grey-600: #5c656c;
+  --grey-500: #6c6c6c;
+  --grey-200: #dfdfdf;
+  --grey-100: #f1f1f1;
+  --grey-50: #f4f6f8;
+  --white: #ffffff;
+
+  /* ---- Semantic ---- */
+  --bg-canvas: var(--white);
+  --bg-canvas-alt: var(--grey-50);
+  --bg-surface: var(--white);
+  --bg-surface-muted: var(--grey-100);
+  --bg-inverse: var(--navy-800);
+  --bg-inverse-deep: var(--navy-900);
+  --bg-inverse-raised: var(--navy-700);
+
+  --border-hairline: var(--grey-200);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-inverse: rgba(255, 255, 255, 0.1);
+  --border-inverse-strong: rgba(255, 255, 255, 0.2);
+
+  --text-primary: var(--ink-1000);
+  --text-secondary: var(--grey-600);
+  --text-tertiary: var(--grey-500);
+  --text-inverse: var(--white);
+  --text-inverse-secondary: rgba(255, 255, 255, 0.6);
+
+  --accent: var(--lime-500);
+  --accent-hover: var(--lime-400);
+  --accent-soft: var(--lime-100);
+  --on-accent: var(--ink-1000);
+
+  --glass-1: rgba(255, 255, 255, 0.04);
+  --glass-2: rgba(255, 255, 255, 0.1);
+  --scrim: rgba(0, 0, 0, 0.4);
+  --overlay-photo: linear-gradient(180deg, rgba(4, 38, 68, 0) 40%, rgba(4, 38, 68, 0.85) 100%);
+  --overlay-hero: linear-gradient(90deg, rgba(1, 35, 62, 0.55) 0%, rgba(1, 35, 62, 0) 62%),
+    linear-gradient(180deg, rgba(1, 35, 62, 0.55) 0%, rgba(1, 35, 62, 0.15) 34%, rgba(1, 35, 62, 0.8) 100%);
+
+  /* ---- States ---- */
+  --success: #1f8a4c;
+  --success-soft: #e6f4ec;
+  --warning: #b26a00;
+  --warning-soft: #fff3df;
+  --danger: #c4321f;
+  --danger-soft: #fdecea;
+  --focus-ring: var(--navy-600);
+  --focus-ring-inverse: var(--lime-500);
+
+  /* ---- Typography ---- */
+  --font-sans: "PP Neue Montreal", "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+
+  /* fluid: mobile → desktop (Design.md §3) */
+  --fs-display: clamp(42px, 3.2vw + 30px, 70px);
+  --fs-h2: clamp(32px, 1.6vw + 25px, 48px);
+  --fs-h3: clamp(24px, 0.8vw + 20px, 32px);
+  --fs-h4: clamp(20px, 0.4vw + 18px, 24px);
+  --fs-lead: clamp(17px, 0.3vw + 16px, 20px);
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-caption: 12px;
+  --fs-stat: clamp(44px, 2.4vw + 34px, 68px);
+
+  --lh-tight: 1;
+  --lh-heading: 1.1;
+  --lh-snug: 1.2;
+  --lh-body: 1.4;
+
+  --ls-display: -0.038em;
+  --ls-h2: -0.027em;
+  --ls-heading: -0.02em;
+  --ls-body: -0.01em;
+  --ls-caption: 0.02em;
+  --ls-eyebrow: 0.08em;
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 20px;
+  --space-8: 24px;
+  --space-9: 30px;
+  --space-10: 32px;
+  --space-11: 40px;
+  --space-12: 52px;
+  --space-13: 64px;
+  --space-14: 80px;
+  --space-15: 120px;
+  --section-y: clamp(64px, 10vw, 120px);
+  --gutter: 20px;
+
+  /* ---- Layout ---- */
+  --container: 1140px;
+  --container-narrow: 760px;
+  --grid-gap: 20px;
+  --nav-h: 72px;
+  --header-m-h: 56px;
+  --tabbar-h: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  --z-nav: 50;
+  --z-tabbar: 60;
+  --z-overlay: 90;
+  --z-modal: 100;
+  --z-toast: 120;
+
+  /* ---- Effects ---- */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+  --radius-round: 50%;
+
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px -3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 0.6px 1.6px -1.5px rgba(0, 0, 0, 0.17), 0 2.3px 6px -3px rgba(0, 0, 0, 0.14),
+    0 10px 26px -4.5px rgba(0, 0, 0, 0.06);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 600ms;
+}
+
+@media (min-width: 810px) {
+  :root {
+    --gutter: 30px;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --grid-gap: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}

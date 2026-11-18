@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Volea Club · Pádel, tenis y gimnasio en Alicante</title>
+  <meta name="description" content="Reserva pista de pádel o tenis en tres clics y sin registro. Escuela, torneos, membresías y eventos de empresa en Volea Club, Alicante.">
+  <meta name="theme-color" content="#042644">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" as="image" href="assets/img/hero-m.webp" media="(max-width: 809.98px)" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="assets/img/hero-960.webp 960w, assets/img/hero-1376.webp 1376w" imagesizes="100vw" media="(min-width: 810px)" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- non render-blocking webfont (system fallback paints first; display=swap) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap"></noscript>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- ================= Icon sprite ================= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-court" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 12h16M12 3.5v5M12 15.5v5M8 8.5h8M8 15.5h8"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9z"/><circle cx="8.5" cy="8.5" r="1.5"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 20.5V5a1.5 1.5 0 0 1 1.5-1.5h8A1.5 1.5 0 0 1 15 5v15.5M15 9.5h3.5A1.5 1.5 0 0 1 20 11v9.5M2.5 20.5h19M8 8h3M8 12h3M8 16h3"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8 1c0 1.7-2.4 2.1-2.4 3.6M12 17h.01"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7.5 4h9v5a4.5 4.5 0 0 1-9 0zM7.5 6H4.5v1.5a3 3 0 0 0 3 3M16.5 6h3v1.5a3 3 0 0 1-3 3M12 13.5V17M8.5 20.5h7M9.5 17h5v3.5h-5z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3.5v7a2 2 0 0 0 2 2v8M10 3.5v7a2 2 0 0 1-2 2M6.5 3.5v4M9.5 3.5v4M17 20.5V3.5c-2.2 1-3.5 3.4-3.5 6.5v3.5H17"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3.5 10v4a1.5 1.5 0 0 0 1.5 1.5h2l7 4.5V4L7 8.5H5A1.5 1.5 0 0 0 3.5 10zM18 9a4 4 0 0 1 0 6M7.5 15.5l1.5 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4.5 19.5h15"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a10 10 0 0 0 6.5 6.5l1.5-2 4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A16 16 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20l1.2-3.9A8.5 8.5 0 1 1 8 19.1z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 1a4 4 0 0 1-2.5-2.5l1-1-1-2z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></symbol>
+    <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="m2.5 9 9.5-5 9.5 5-9.5 5zM6.5 11.2V16c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3v-4.8M21.5 9v5"/></symbol>
+    <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M5.5 6.5a9 9 0 0 1 0 11M18.5 6.5a9 9 0 0 0 0 11"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M15.5 3.5c0 1.6-1.2 3-2.8 3.1-.2-1.5 1.1-3 2.8-3.1zM17.3 12.6c0-1.9 1.5-2.8 1.6-2.9a3.6 3.6 0 0 0-2.8-1.5c-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7a3.8 3.8 0 0 0-3.2 2c-1.4 2.4-.4 5.9 1 7.8.6.9 1.4 2 2.4 1.9.9 0 1.3-.6 2.5-.6s1.5.6 2.5.6c1 0 1.7-1 2.3-1.9.7-1 1-2 1-2.1 0 0-1.9-.8-1.9-3.3z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ================= Desktop / tablet topbar ================= -->
+  <header class="topbar" data-topbar>
+    <div class="container topbar__inner">
+      <a class="brand" href="#inicio" aria-label="Volea Club, inicio">
+        <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" style="fill:var(--accent)"/><path d="M8 9l6 11 6-11" fill="none" style="stroke:var(--on-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volea<sup>CLUB</sup>
+      </a>
+      <nav class="topbar__nav" aria-label="Secciones">
+        <a class="topbar__link" href="#club" data-nav>El club</a>
+        <a class="topbar__link" href="#servicios" data-nav>Servicios</a>
+        <a class="topbar__link" href="#reservar" data-nav>Disponibilidad</a>
+        <a class="topbar__link" href="#escuela" data-nav>Escuela</a>
+        <a class="topbar__link" href="#planes" data-nav>Planes</a>
+        <a class="topbar__link" href="#empresas" data-nav>Empresas</a>
+        <a class="topbar__link" href="#faq" data-nav>Ayuda</a>
+      </nav>
+      <div class="topbar__actions">
+        <a class="btn btn--secondary btn--sm" href="#empresas" data-b2b-cta>Empresas y grupos</a>
+        <button class="btn btn--primary btn--sm" type="button" data-open-booking>Reservar pista</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= Mobile compact header ================= -->
+  <header class="m-header">
+    <a class="brand" href="#inicio" aria-label="Volea Club, inicio">
+      <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" style="fill:var(--accent)"/><path d="M8 9l6 11 6-11" fill="none" style="stroke:var(--on-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Volea<sup>CLUB</sup>
+    </a>
+    <a class="btn btn--secondary btn--sm" href="#empresas" data-b2b-cta>Empresas</a>
+  </header>
+
+  <!-- ================= Scroll container (internal scroll on mobile) ================= -->
+  <div id="app-scroll">
+  <main id="main">
+
+    <!-- =============== HERO =============== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 809.98px)" srcset="assets/img/hero-m.webp" width="540" height="720">
+          <img class="hero__img" src="assets/img/hero-1376.webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1376.webp 1376w" sizes="100vw" width="1376" height="768" alt="" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__copy" data-hero-copy>
+          <p class="eyebrow hero__eyebrow" data-hero-line>Pádel · Tenis · Gimnasio · Alicante</p>
+          <h1 class="t-display hero__title" id="hero-title">
+            <span class="hero__line"><span data-hero-line>Tu pista, lista</span></span>
+            <span class="hero__line"><span data-hero-line>en tres clics.</span></span>
+          </h1>
+          <p class="hero__sub" data-hero-line>8 pistas de pádel, 4 de tierra batida, escuela y gimnasio. Reserva sin registrarte y paga con Bizum, Apple Pay o tarjeta.</p>
+        </div>
+
+        <!-- RF-01 Quick booking widget with B2C/B2B switch -->
+        <div class="widget" data-widget>
+          <div class="widget__top">
+            <div class="segmented" role="radiogroup" aria-label="¿Qué buscas?" data-segmented="audience">
+              <span class="segmented__pill" aria-hidden="true"></span>
+              <button class="segmented__opt" role="radio" aria-checked="true" data-value="b2c" type="button"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-ball"/></svg>Quiero jugar</button>
+              <button class="segmented__opt" role="radio" aria-checked="false" data-value="b2b" type="button"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-building"/></svg>Empresas y grupos</button>
+            </div>
+            <p class="live" aria-live="polite">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>Pistas disponibles para hoy: <b class="t-num" data-live-count>–</b></span>
+            </p>
+          </div>
+
+          <form class="widget__form" data-widget-panel="b2c" data-quick-booking novalidate>
+            <div class="field">
+              <label class="field__label" for="qb-sport">Deporte</label>
+              <select class="field__control" id="qb-sport" name="sport">
+                <option value="padel">Pádel · 90 min</option>
+                <option value="tenis">Tenis · 60 min</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qb-date">Fecha</label>
+              <select class="field__control" id="qb-date" name="date" data-date-options></select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qb-time">Hora</label>
+              <select class="field__control" id="qb-time" name="time" data-time-options></select>
+            </div>
+            <button class="btn btn--primary btn--lg widget__cta" type="submit">Ver disponibilidad <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          </form>
+
+          <form class="widget__form" data-widget-panel="b2b" data-quick-b2b novalidate hidden>
+            <div class="field">
+              <label class="field__label" for="qe-type">Tipo de evento</label>
+              <select class="field__control" id="qe-type" name="eventType">
+                <option value="liga">Liga de empresa</option>
+                <option value="torneo">Torneo de 1 día</option>
+                <option value="corporativo">Evento corporativo + catering</option>
+                <option value="patrocinio">Patrocinio</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qe-people">Asistentes</label>
+              <select class="field__control" id="qe-people" name="attendees">
+                <option value="10-24">10 – 24</option>
+                <option value="25-49" selected>25 – 49</option>
+                <option value="50-99">50 – 99</option>
+                <option value="100+">100 o más</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qe-month">Fecha estimada</label>
+              <select class="field__control" id="qe-month" name="month" data-month-options></select>
+            </div>
+            <button class="btn btn--dark btn--lg widget__cta" type="submit">Pedir presupuesto <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          </form>
+
+          <div class="widget__foot">
+            <button class="widget__geo" type="button" data-geo>
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span data-geo-label>Av. de la Volea 12, Alicante · ¿A qué distancia estoy?</span>
+            </button>
+            <a class="widget__b2b-link" href="#empresas" data-b2b-cta>¿Eventos de empresa o grupos? <u>Haz clic aquí</u></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== EL CLUB (people + about) =============== -->
+    <section class="section section--alt" id="club" aria-labelledby="club-title">
+      <div class="container club">
+        <div class="club__copy" data-reveal>
+          <p class="eyebrow" data-reveal-item>El club</p>
+          <h2 class="t-h2" id="club-title" data-reveal-item>Hecho para jugar todo el año.</h2>
+          <p class="t-lead" data-reveal-item>Pistas cubiertas para los días de lluvia, tierra batida para las tardes largas y una terraza para el después. Todo a diez minutos del centro.</p>
+          <ul class="club__facts" data-reveal-item>
+            <li><b class="t-num">8</b><span>pistas de pádel: 2 panorámicas y 2 indoor</span></li>
+            <li><b class="t-num">4</b><span>pistas de tenis de tierra batida</span></li>
+            <li><b class="t-num">07–23</b><span>horario de lunes a domingo</span></li>
+          </ul>
+        </div>
+        <div class="club__collage" aria-hidden="true">
+          <figure class="club__img club__img--a" data-parallax="-8"><img src="assets/img/svc-padel.webp" srcset="assets/img/svc-padel-480.webp 480w, assets/img/svc-padel.webp 896w" sizes="(min-width: 810px) 34vw, 70vw" width="896" height="1200" alt="" loading="lazy" decoding="async"></figure>
+          <figure class="club__img club__img--b" data-parallax="10"><img src="assets/img/detail-grip.webp" srcset="assets/img/detail-grip-480.webp 480w, assets/img/detail-grip.webp 900w" sizes="(min-width: 810px) 22vw, 50vw" width="900" height="672" alt="" loading="lazy" decoding="async"></figure>
+          <div class="club__stat" data-parallax="4">
+            <span class="t-stat" data-count="1240" data-format="int">0</span>
+            <span>socios que juegan cada semana</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== IMPACT IN NUMBERS (RF-04.1 counter) =============== -->
+    <section class="section" aria-labelledby="impact-title">
+      <div class="container impact">
+        <div class="impact__meter" data-reveal>
+          <p class="eyebrow" data-reveal-item>Nuestro impacto</p>
+          <p class="impact__big" data-reveal-item><span class="t-stat" data-count="96" data-suffix="%">0%</span></p>
+          <div class="meter" data-reveal-item>
+            <div class="meter__bar"><span class="meter__fill" data-meter="0.96"></span></div>
+            <div class="meter__scale t-caption t-muted"><span>0%</span><span>100%</span></div>
+          </div>
+          <p class="t-body" data-reveal-item>de los socios recomendaría Volea a un amigo (encuesta anual, 2025).</p>
+        </div>
+        <div class="impact__grid">
+          <h2 class="t-h3 impact__title" id="impact-title">El club, en números.</h2>
+          <dl class="stats" data-reveal>
+            <div class="stat" data-reveal-item><dt>Reservas realizadas</dt><dd class="t-stat" data-count="48210" data-format="int" data-suffix="+">0</dd></div>
+            <div class="stat" data-reveal-item><dt>Partidos al mes</dt><dd class="t-stat" data-count="3600" data-format="int" data-suffix="+">0</dd></div>
+            <div class="stat" data-reveal-item><dt>Torneos al año</dt><dd class="t-stat" data-count="36">0</dd></div>
+            <div class="stat" data-reveal-item><dt>Valoración en Google</dt><dd class="t-stat" data-count="4.8" data-decimals="1">0</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== SERVICES CAROUSEL =============== -->
+    <section class="section section--alt" id="servicios" aria-labelledby="svc-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div class="stack" data-reveal>
+            <p class="eyebrow" data-reveal-item>Servicios</p>
+            <h2 class="t-h2" id="svc-title" data-reveal-item>Hecho para cada parte de tu juego.</h2>
+          </div>
+          <div class="carousel__nav" data-carousel-nav="svc">
+            <span class="carousel__count" aria-live="polite"><b data-carousel-index>01</b> / <span data-carousel-total>05</span></span>
+            <button class="btn btn--secondary btn--icon" type="button" data-carousel-prev aria-label="Anterior"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+            <button class="btn btn--secondary btn--icon" type="button" data-carousel-next aria-label="Siguiente"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          </div>
+        </div>
+        <div class="carousel" data-carousel="svc">
+          <ul class="carousel__track svc-track" data-carousel-track>
+            <li class="svc">
+              <article class="media-card">
+                <img class="media-card__img" src="assets/img/svc-padel-480.webp" srcset="assets/img/svc-padel-480.webp 480w, assets/img/svc-padel.webp 896w" sizes="(min-width: 1200px) 340px, (min-width: 810px) 40vw, 82vw" width="480" height="642" alt="Partido de dobles en una pista de pádel azul al sol de la tarde" loading="lazy" decoding="async">
+                <div class="media-card__top"><span class="badge badge--inverse">01</span><span class="badge badge--accent">Desde 24 €</span></div>
+                <div class="media-card__body">
+                  <h3 class="t-h4">Pistas de pádel</h3>
+                  <p class="t-small media-card__text">Cristal panorámico, césped de 12 mm y luz LED. Turnos de 90 min.</p>
+                  <button class="btn btn--primary btn--sm btn--with-icon svc__cta" type="button" data-open-booking data-sport="padel">Reservar <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button>
+                </div>
+              </article>
+            </li>
+            <li class="svc">
+              <article class="media-card">
+                <img class="media-card__img" src="assets/img/svc-tenis-480.webp" srcset="assets/img/svc-tenis-480.webp 480w, assets/img/svc-tenis.webp 896w" sizes="(min-width: 1200px) 340px, (min-width: 810px) 40vw, 82vw" width="480" height="642" alt="Jugadora sacando en una pista de tierra batida" loading="lazy" decoding="async">
+                <div class="media-card__top"><span class="badge badge--inverse">02</span><span class="badge badge--accent">Desde 14 €</span></div>
+                <div class="media-card__body">
+                  <h3 class="t-h4">Tenis en tierra batida</h3>
+                  <p class="t-small media-card__text">Cuatro pistas de arcilla con riego automático. Turnos de 60 min.</p>
+                  <button class="btn btn--primary btn--sm btn--with-icon svc__cta" type="button" data-open-booking data-sport="tenis">Reservar <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button>
+                </div>
+              </article>
+            </li>
+            <li class="svc">
+              <article class="media-card">
+                <img class="media-card__img" src="assets/img/svc-escuela-480.webp" srcset="assets/img/svc-escuela-480.webp 480w, assets/img/svc-escuela.webp 896w" sizes="(min-width: 1200px) 340px, (min-width: 810px) 40vw, 82vw" width="480" height="642" alt="Entrenador corrigiendo la empuñadura de una alumna" loading="lazy" decoding="async">
+                <div class="media-card__top"><span class="badge badge--inverse">03</span><span class="badge badge--accent">Desde 49 €/mes</span></div>
+                <div class="media-card__body">
+                  <h3 class="t-h4">Escuela</h3>
+                  <p class="t-small media-card__text">Grupos por nivel de 4 alumnos, de 6 años a veteranos.</p>
+                  <button class="btn btn--primary btn--sm btn--with-icon svc__cta" type="button" data-enroll="escuela">Inscribirme <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button>
+                </div>
+              </article>
+            </li>
+            <li class="svc">
+              <article class="media-card">
+                <img class="media-card__img" src="assets/img/svc-gym-480.webp" srcset="assets/img/svc-gym-480.webp 480w, assets/img/svc-gym.webp 896w" sizes="(min-width: 1200px) 340px, (min-width: 810px) 40vw, 82vw" width="480" height="642" alt="Socio entrenando con kettlebell en el gimnasio del club" loading="lazy" decoding="async">
+                <div class="media-card__top"><span class="badge badge--inverse">04</span><span class="badge badge--accent">Incluido en Club</span></div>
+                <div class="media-card__body">
+                  <h3 class="t-h4">Gimnasio y preparación física</h3>
+                  <p class="t-small media-card__text">Fuerza, movilidad y prevención de lesiones específicas para raqueta.</p>
+                  <a class="btn btn--primary btn--sm btn--with-icon svc__cta" href="#planes">Ver planes <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></a>
+                </div>
+              </article>
+            </li>
+            <li class="svc">
+              <article class="media-card">
+                <img class="media-card__img" src="assets/img/svc-torneos-480.webp" srcset="assets/img/svc-torneos-480.webp 480w, assets/img/svc-torneos.webp 896w" sizes="(min-width: 1200px) 340px, (min-width: 810px) 40vw, 82vw" width="480" height="642" alt="Pareja celebrando un punto en un torneo nocturno" loading="lazy" decoding="async">
+                <div class="media-card__top"><span class="badge badge--inverse">05</span><span class="badge badge--accent">Desde 18 €</span></div>
+                <div class="media-card__body">
+                  <h3 class="t-h4">Torneos y ligas</h3>
+                  <p class="t-small media-card__text">Americanos los viernes, liga social por niveles y open trimestral.</p>
+                  <button class="btn btn--primary btn--sm btn--with-icon svc__cta" type="button" data-enroll="torneo">Inscribirme <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== HOW TO BOOK + LIVE AVAILABILITY (RF-02.1) =============== -->
+    <section class="section" id="reservar" aria-labelledby="book-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-reveal-item>Cómo reservar</p>
+          <h2 class="t-h2" id="book-title" data-reveal-item>De la pista al partido, sin registro.</h2>
+        </div>
+        <ol class="steps" data-steps>
+          <li class="step"><span class="step__n t-num">01</span><h3 class="t-h4">Elige pista y hora</h3><p class="t-small t-muted">Mira la disponibilidad real sin crear cuenta.</p></li>
+          <li class="step"><span class="step__n t-num">02</span><h3 class="t-h4">Paga en un paso</h3><p class="t-small t-muted">Nombre, email y teléfono. Bizum, Apple Pay, Google Pay o tarjeta.</p></li>
+          <li class="step"><span class="step__n t-num">03</span><h3 class="t-h4">Llega con tu QR</h3><p class="t-small t-muted">Lo recibes por email y WhatsApp. Abre el torno de acceso.</p></li>
+          <li class="step"><span class="step__n t-num">04</span><h3 class="t-h4">Juega y repite</h3><p class="t-small t-muted">Cancelación gratuita hasta 24 h antes.</p></li>
+        </ol>
+
+        <div class="avail-card card card--lg" data-reveal>
+          <div class="avail-card__head" data-reveal-item>
+            <div>
+              <h3 class="t-h3">Disponibilidad en tiempo real</h3>
+              <p class="t-small t-muted">Toca un hueco libre para reservarlo.</p>
+            </div>
+            <div class="segmented" role="tablist" aria-label="Deporte" data-segmented="inline-sport">
+              <span class="segmented__pill" aria-hidden="true"></span>
+              <button class="segmented__opt" role="tab" aria-selected="true" data-value="padel" type="button">Pádel</button>
+              <button class="segmented__opt" role="tab" aria-selected="false" data-value="tenis" type="button">Tenis</button>
+            </div>
+          </div>
+          <div data-avail-inline data-reveal-item></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== BREATHING A · full-bleed atmospheric =============== -->
+    <section class="breath-a" aria-label="La última bola del día">
+      <div class="breath-a__media">
+        <img src="assets/img/atmos-ball.webp" srcset="assets/img/atmos-ball-800.webp 800w, assets/img/atmos-ball.webp 1584w" sizes="100vw" width="1584" height="672" alt="Una pelota de pádel sobre la línea blanca de una pista azul al anochecer" loading="lazy" decoding="async" data-breath-img>
+      </div>
+      <p class="breath-a__caption t-small"><span class="t-num">21:30</span> · Pista 4 · La última bola del día.</p>
+    </section>
+
+    <!-- =============== WHY US + SOCIAL PROOF B2C (RF-04.1) =============== -->
+    <section class="section" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div class="stack" data-reveal>
+            <p class="eyebrow" data-reveal-item>Por qué Volea</p>
+            <h2 class="t-h2" id="why-title" data-reveal-item>Más que un partido. Un sitio al que volver.</h2>
+          </div>
+          <a class="google-score" href="#opiniones" aria-label="4,8 de 5 en Google, 612 reseñas">
+            <span class="t-stat">4,8</span>
+            <span class="google-score__meta">
+              <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+              <span class="t-small t-muted">612 reseñas en Google</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="why">
+          <article class="why__feature card card--muted" data-reveal>
+            <span class="badge badge--neutral" data-reveal-item><svg class="icon icon--sm" aria-hidden="true"><use href="#i-users"/></svg>Juego social</span>
+            <h3 class="t-h3" data-reveal-item>Quedar. Jugar. Repetir.</h3>
+            <p class="t-body" data-reveal-item>¿Te falta uno? Publica tu partido abierto y te emparejamos por nivel. Más de 300 partidos abiertos cada mes.</p>
+          </article>
+          <article class="why__feature card card--muted" data-reveal>
+            <span class="badge badge--neutral" data-reveal-item><svg class="icon icon--sm" aria-hidden="true"><use href="#i-school"/></svg>Entrenamiento experto</span>
+            <h3 class="t-h3" data-reveal-item>Aprender. Mejorar. Competir.</h3>
+            <p class="t-body" data-reveal-item>Entrenadores titulados, vídeo‑análisis y un plan por trimestre para que notes el progreso.</p>
+          </article>
+        </div>
+
+        <div class="reviews" id="opiniones" data-reveal>
+          <figure class="review card" data-reveal-item>
+            <div class="stars" aria-label="5 de 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote><p>“Reservo desde el móvil en el bus y en 30 segundos tengo el QR. Las pistas panorámicas están siempre impecables.”</p></blockquote>
+            <figcaption class="review__by"><span class="avatar">MR</span><span><b>Marta R.</b><span class="t-small t-muted">Socia desde 2022 · Google</span></span></figcaption>
+          </figure>
+          <figure class="review card" data-reveal-item>
+            <div class="stars" aria-label="5 de 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote><p>“Apunté a mis dos hijos a la escuela y ahora jugamos los cuatro los domingos. El ambiente es lo mejor.”</p></blockquote>
+            <figcaption class="review__by"><span class="avatar">DG</span><span><b>David G.</b><span class="t-small t-muted">Plan Club · Google</span></span></figcaption>
+          </figure>
+          <figure class="review card" data-reveal-item>
+            <div class="stars" aria-label="5 de 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote><p>“La tierra batida está mejor cuidada que en muchos torneos. Y pagar con Bizum sin registrarme fue un detalle.”</p></blockquote>
+            <figcaption class="review__by"><span class="avatar">AL</span><span><b>Andrés L.</b><span class="t-small t-muted">Jugador de tenis · Google</span></span></figcaption>
+          </figure>
+        </div>
+
+        <div class="tourneys" data-reveal>
+          <p class="eyebrow" data-reveal-item>Sede de</p>
+          <ul class="tourneys__list" data-reveal-item>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Open Volea 2025</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Circuito Costa Blanca</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Liga Interclubs CV</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Máster Junior Levante</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== COACHES / ESCUELA =============== -->
+    <section class="section section--alt" id="escuela" aria-labelledby="coach-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div class="stack" data-reveal>
+            <p class="eyebrow" data-reveal-item>Escuela</p>
+            <h2 class="t-h2" id="coach-title" data-reveal-item>Entrena con quien sabe.</h2>
+          </div>
+          <button class="btn btn--dark btn--with-icon" type="button" data-enroll="clase-prueba">Clase de prueba gratis <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button>
+        </div>
+        <ul class="coaches" data-reveal>
+          <li class="coach" data-reveal-item>
+            <figure class="coach__img"><img src="assets/img/coach-lucia-480.webp" srcset="assets/img/coach-lucia-480.webp 480w, assets/img/coach-lucia.webp 896w" sizes="(min-width: 810px) 33vw, 80vw" width="480" height="642" alt="Lucía Ferrer, directora de la escuela de pádel" loading="lazy" decoding="async"></figure>
+            <h3 class="t-h4">Lucía Ferrer</h3>
+            <p class="t-small t-muted">Directora de pádel · Nivel III FEP</p>
+          </li>
+          <li class="coach" data-reveal-item>
+            <figure class="coach__img"><img src="assets/img/coach-javier-480.webp" srcset="assets/img/coach-javier-480.webp 480w, assets/img/coach-javier.webp 896w" sizes="(min-width: 810px) 33vw, 80vw" width="480" height="642" alt="Javier Soler, director de tenis" loading="lazy" decoding="async"></figure>
+            <h3 class="t-h4">Javier Soler</h3>
+            <p class="t-small t-muted">Director de tenis · RPT Nivel 3</p>
+          </li>
+          <li class="coach" data-reveal-item>
+            <figure class="coach__img"><img src="assets/img/coach-samuel-480.webp" srcset="assets/img/coach-samuel-480.webp 480w, assets/img/coach-samuel.webp 896w" sizes="(min-width: 810px) 33vw, 80vw" width="480" height="642" alt="Samuel Ndiaye, preparador físico" loading="lazy" decoding="async"></figure>
+            <h3 class="t-h4">Samuel Ndiaye</h3>
+            <p class="t-small t-muted">Preparación física · CCAFD</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =============== MEMBERSHIP / PRICING =============== -->
+    <section class="section" id="planes" aria-labelledby="plans-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div class="stack" data-reveal>
+            <p class="eyebrow" data-reveal-item>Membresías</p>
+            <h2 class="t-h2" id="plans-title" data-reveal-item>Elige cómo quieres jugar.</h2>
+          </div>
+          <p class="t-body">Sin matrícula ni permanencia. Cambia o cancela desde tu email cuando quieras.</p>
+        </div>
+        <div class="plans" data-plans>
+          <article class="plan card" data-reveal>
+            <div class="plan__head" data-reveal-item>
+              <h3 class="t-h4">Juego libre</h3>
+              <p class="plan__price"><span class="t-h2 t-num">29 €</span><span class="t-small t-muted">/mes</span></p>
+              <p class="t-small t-muted">Para quien juega un par de veces por semana.</p>
+            </div>
+            <ul class="plan__list" data-reveal-item>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>2 h de pista semanales incluidas</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Reserva con 7 días de antelación</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Partidos abiertos y americanos</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>-15% en horas extra</li>
+            </ul>
+            <button class="btn btn--secondary btn--block plan__cta" type="button" data-join="libre">Hacerme socio</button>
+          </article>
+          <article class="plan card card--featured" data-reveal>
+            <div class="plan__head" data-reveal-item>
+              <div class="row"><h3 class="t-h4">Club</h3><span class="badge badge--accent">El más elegido</span></div>
+              <p class="plan__price"><span class="t-h2 t-num">59 €</span><span class="t-small">/mes</span></p>
+              <p class="t-small">Pista, gimnasio y una clase en grupo a la semana.</p>
+            </div>
+            <ul class="plan__list" data-reveal-item>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>6 h de pista semanales incluidas</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Reserva prioritaria (14 días)</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Gimnasio sin límite</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>1 clase grupal semanal</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Torneos sociales gratis</li>
+            </ul>
+            <button class="btn btn--primary btn--block plan__cta" type="button" data-join="club">Hacerme socio</button>
+          </article>
+          <article class="plan card" data-reveal>
+            <div class="plan__head" data-reveal-item>
+              <div class="row"><h3 class="t-h4">Performance</h3><span class="badge badge--soft">Recomendado</span></div>
+              <p class="plan__price"><span class="t-h2 t-num">99 €</span><span class="t-small t-muted">/mes</span></p>
+              <p class="t-small t-muted">Para competir y medir tu progreso.</p>
+            </div>
+            <ul class="plan__list" data-reveal-item>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Pista ilimitada en horario valle</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>2 clases privadas al mes</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Valoración física trimestral</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Preparación de torneos</li>
+            </ul>
+            <button class="btn btn--secondary btn--block plan__cta" type="button" data-join="performance">Hacerme socio</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== BREATHING D · kinetic marquee =============== -->
+    <section class="breath-d" aria-label="Servicios para empresas">
+      <div class="breath-d__row" data-marquee>
+        <div class="breath-d__track" data-marquee-track>
+          <span>Ligas de empresa</span><i aria-hidden="true"></i><span>Teambuilding</span><i aria-hidden="true"></i><span>Patrocinios</span><i aria-hidden="true"></i><span>Eventos con catering</span><i aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== B2B VALUE PROPOSITION (RF-03.1) =============== -->
+    <section class="section section--inverse b2b" id="empresas" aria-labelledby="b2b-title">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div class="stack" data-reveal>
+            <p class="eyebrow" data-reveal-item>Empresas y eventos</p>
+            <h2 class="t-h2" id="b2b-title" data-reveal-item>Tu próximo evento de empresa, en la pista.</h2>
+            <p class="t-lead" data-reveal-item>Organizamos el torneo, la comida y la sala. Tú solo traes al equipo.</p>
+          </div>
+          <div class="row">
+            <a class="btn btn--primary btn--with-icon" href="#presupuesto">Pedir presupuesto <span class="btn__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></a>
+            <button class="btn btn--ghost-inverse" type="button" data-open-dossier><svg class="icon icon--sm" aria-hidden="true"><use href="#i-download"/></svg>Dossier PDF</button>
+          </div>
+        </div>
+
+        <div class="b2b-bento">
+          <article class="b2b-card b2b-card--lg" data-reveal>
+            <figure class="b2b-card__img"><img src="assets/img/b2b-teambuilding.webp" srcset="assets/img/b2b-teambuilding-480.webp 480w, assets/img/b2b-teambuilding.webp 900w" sizes="(min-width: 1200px) 640px, 92vw" width="900" height="672" alt="Equipo de una empresa animando durante un torneo de pádel de teambuilding" loading="lazy" decoding="async"></figure>
+            <div class="b2b-card__body" data-reveal-item>
+              <span class="badge badge--inverse"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-trophy"/></svg>Torneos y teambuilding</span>
+              <h3 class="t-h3">Torneos de 1 día y ligas de empresa</h3>
+              <ul class="b2b-card__list t-small">
+                <li>Cuadro por niveles, árbitro y trofeos</li>
+                <li>Clínic previo con nuestros entrenadores</li>
+                <li>Ligas trimestrales entre departamentos o empresas</li>
+              </ul>
+              <p class="t-small b2b-card__price">Desde <b class="t-num">35 €</b> por persona</p>
+            </div>
+          </article>
+          <article class="b2b-card" data-reveal>
+            <figure class="b2b-card__img"><img src="assets/img/b2b-terraza-480.webp" srcset="assets/img/b2b-terraza-480.webp 480w, assets/img/b2b-terraza.webp 900w" sizes="(min-width: 1200px) 360px, 92vw" width="480" height="358" alt="Terraza del club preparada para una comida de empresa al atardecer" loading="lazy" decoding="async"></figure>
+            <div class="b2b-card__body" data-reveal-item>
+              <span class="badge badge--inverse"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-utensils"/></svg>Espacios</span>
+              <h3 class="t-h4">Terraza, restauración y sala de reuniones</h3>
+              <p class="t-small b2b-card__text">Terraza para 120 personas, catering propio y una sala para 16 con pantalla y vistas a pista.</p>
+            </div>
+          </article>
+          <article class="b2b-card" data-reveal>
+            <figure class="b2b-card__img"><img src="assets/img/b2b-patrocinio-480.webp" srcset="assets/img/b2b-patrocinio-480.webp 480w, assets/img/b2b-patrocinio.webp 900w" sizes="(min-width: 1200px) 360px, 92vw" width="480" height="358" alt="Pista panorámica iluminada con paneles libres para patrocinio" loading="lazy" decoding="async"></figure>
+            <div class="b2b-card__body" data-reveal-item>
+              <span class="badge badge--inverse"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-megaphone"/></svg>Patrocinios</span>
+              <h3 class="t-h4">Patrocinio de pistas y publicidad</h3>
+              <p class="t-small b2b-card__text">Naming de pista, lonas en cristal y presencia en 36 torneos al año. 9.000 visitas al mes.</p>
+            </div>
+          </article>
+        </div>
+
+        <dl class="b2b-stats" data-reveal>
+          <div data-reveal-item><dt>Eventos de empresa</dt><dd class="t-stat" data-count="140" data-suffix="+">0</dd></div>
+          <div data-reveal-item><dt>Valoración media de RR. HH.</dt><dd class="t-stat" data-count="9.4" data-decimals="1">0</dd></div>
+          <div data-reveal-item><dt>Asistentes máximo</dt><dd class="t-stat" data-count="200">0</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- =============== B2B SOCIAL PROOF (RF-04.2) =============== -->
+    <section class="section section--alt b2b-proof" aria-labelledby="proof-title">
+      <div class="container">
+        <h2 class="t-caption t-muted b2b-proof__title" id="proof-title">Han celebrado su evento en Volea</h2>
+      </div>
+      <div class="logos">
+        <div class="logos__row" data-logos>
+        <ul class="logos__track">
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="Logoipsum"><circle cx="14" cy="14" r="12" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="14" cy="14" r="4" fill="currentColor"/><text x="34" y="20" font-size="17" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif" letter-spacing="-0.5">logoipsum</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="Logoipsum"><path d="M2 24 14 4l12 20z" fill="currentColor"/><text x="34" y="20" font-size="17" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif" letter-spacing="1">LOGOIPSUM</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="Logo Ipsum"><rect x="2" y="4" width="20" height="20" rx="6" fill="currentColor"/><rect x="8" y="10" width="8" height="8" rx="2" fill="var(--bg-canvas-alt)"/><text x="30" y="20" font-size="17" font-weight="400" fill="currentColor" font-family="Inter Tight, sans-serif">Logo Ipsum</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="ipsum.co"><path d="M4 14a10 10 0 0 1 20 0M4 14a10 10 0 0 0 20 0" fill="none" stroke="currentColor" stroke-width="3"/><path d="M4 14h20" stroke="currentColor" stroke-width="3"/><text x="32" y="20" font-size="17" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif" letter-spacing="-0.5">ipsum.co</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="Logoipsum"><path d="M3 22V6h6l5 9 5-9h6v16" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><text x="34" y="20" font-size="17" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif" font-style="italic">logoipsum</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="LOGO·IPSUM"><circle cx="8" cy="14" r="6" fill="currentColor"/><circle cx="20" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3"/><text x="34" y="20" font-size="16" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif" letter-spacing="1.5">LOGO·IPSUM</text></svg></li>
+          <li><svg class="logo-mark" viewBox="0 0 168 28" aria-label="Logoipsum"><path d="M14 2 26 14 14 26 2 14z" fill="none" stroke="currentColor" stroke-width="3"/><text x="34" y="20" font-size="17" font-weight="500" fill="currentColor" font-family="Inter Tight, sans-serif">logoipsum</text></svg></li>
+        </ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="hr-quotes" data-reveal>
+          <figure class="hr-quote card" data-reveal-item>
+            <blockquote><p class="t-h4">“Llevamos 3 años celebrando aquí la liga interna. Es lo que más valora la plantilla del plan de bienestar.”</p></blockquote>
+            <figcaption class="review__by"><span class="avatar">CP</span><span><b>Clara Pons</b><span class="t-small t-muted">Head of People · Logoipsum</span></span></figcaption>
+          </figure>
+          <figure class="hr-quote card" data-reveal-item>
+            <blockquote><p class="t-h4">“Torneo, catering y sala para la presentación, todo con un solo contacto. Nos llegó el presupuesto en menos de 24 h.”</p></blockquote>
+            <figcaption class="review__by"><span class="avatar">RM</span><span><b>Rubén Mas</b><span class="t-small t-muted">Marketing Manager · ipsum.co</span></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== B2B SMART FORM (RF-03.2) + DOSSIER (RF-03.3) =============== -->
+    <section class="section" id="presupuesto" aria-labelledby="quote-title">
+      <div class="container quote">
+        <div class="quote__form card card--lg">
+          <div class="quote__head">
+            <p class="eyebrow">Presupuesto a medida</p>
+            <h2 class="t-h3" id="quote-title">Cuéntanos tu evento. Te respondemos en menos de 24 h.</h2>
+            <div>
+              <div class="stepper" aria-hidden="true" data-q-stepper><span class="stepper__seg is-active"></span><span class="stepper__seg"></span><span class="stepper__seg"></span></div>
+              <div class="stepper-labels" data-q-labels><span class="is-active">Evento</span><span>Detalles</span><span>Contacto</span></div>
+            </div>
+          </div>
+
+          <form class="quote__body" data-b2b-form novalidate>
+            <p class="sr-only" aria-live="polite" data-q-status></p>
+            <!-- step 1 -->
+            <fieldset class="q-step" data-q-step="1">
+              <legend class="t-h4 q-step__legend">¿Qué tipo de evento buscas?</legend>
+              <div class="choices choices--2" data-choice-group="eventType">
+                <label class="choice"><input type="radio" name="eventType" value="liga" required><span class="choice__box"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg><span class="choice__title">Liga de empresa</span><span class="choice__desc">Jornadas semanales o mensuales durante un trimestre.</span><span class="choice__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                <label class="choice"><input type="radio" name="eventType" value="torneo"><span class="choice__box"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg><span class="choice__title">Torneo de 1 día</span><span class="choice__desc">Teambuilding con cuadro, clínic y entrega de premios.</span><span class="choice__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                <label class="choice"><input type="radio" name="eventType" value="corporativo"><span class="choice__box"><svg class="icon" aria-hidden="true"><use href="#i-utensils"/></svg><span class="choice__title">Evento corporativo + catering</span><span class="choice__desc">Pista, comida en terraza y sala de reuniones.</span><span class="choice__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                <label class="choice"><input type="radio" name="eventType" value="patrocinio"><span class="choice__box"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="choice__title">Patrocinio</span><span class="choice__desc">Naming de pista, lonas y presencia en torneos.</span><span class="choice__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              </div>
+              <p class="field__error" data-error-for="eventType"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-help"/></svg>Elige un tipo de evento para continuar.</p>
+            </fieldset>
+
+            <!-- step 2 -->
+            <fieldset class="q-step" data-q-step="2" hidden>
+              <legend class="t-h4 q-step__legend">Detalles del evento</legend>
+              <div class="form-grid form-grid--2">
+                <div class="field" data-hide-for="patrocinio">
+                  <label class="field__label" for="q-attendees">Número estimado de asistentes</label>
+                  <select class="field__control" id="q-attendees" name="attendees" required>
+                    <option value="">Selecciona</option>
+                    <option value="10-24">10 – 24</option>
+                    <option value="25-49">25 – 49</option>
+                    <option value="50-99">50 – 99</option>
+                    <option value="100+">100 o más</option>
+                  </select>
+                  <p class="field__error">Indica un rango de asistentes.</p>
+                </div>
+                <div class="field" data-hide-for="patrocinio">
+                  <label class="field__label" for="q-courts">Pistas necesarias</label>
+                  <input class="field__control t-num" id="q-courts" name="courts" type="number" inputmode="numeric" min="1" max="12" value="4" required>
+                  <p class="field__hint" data-courts-hint>Sugerido según asistentes.</p>
+                  <p class="field__error">Entre 1 y 12 pistas.</p>
+                </div>
+                <div class="field" data-show-for="patrocinio" hidden>
+                  <label class="field__label" for="q-sponsor">Formato de patrocinio</label>
+                  <select class="field__control" id="q-sponsor" name="sponsorFormat">
+                    <option value="naming">Naming de pista (anual)</option>
+                    <option value="lonas">Lonas en cristal</option>
+                    <option value="torneo">Patrocinio de torneo</option>
+                    <option value="pack">Pack completo</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="q-budget">Presupuesto aproximado</label>
+                  <select class="field__control" id="q-budget" name="budget" required>
+                    <option value="">Selecciona</option>
+                    <option value="<1500">Menos de 1.500 €</option>
+                    <option value="1500-3000">1.500 – 3.000 €</option>
+                    <option value="3000-6000">3.000 – 6.000 €</option>
+                    <option value="6000+">Más de 6.000 €</option>
+                  </select>
+                  <p class="field__error">Elige un rango de presupuesto.</p>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="q-date">Fecha estimada</label>
+                  <input class="field__control" id="q-date" name="date" type="date" required>
+                  <p class="field__error">Elige una fecha a partir de mañana.</p>
+                </div>
+                <fieldset class="field span-2" data-hide-for="patrocinio">
+                  <legend class="field__label">Extras (opcional)</legend>
+                  <div class="row extras">
+                    <label class="check"><input type="checkbox" name="extras" value="catering">Catering</label>
+                    <label class="check"><input type="checkbox" name="extras" value="sala">Sala de reuniones</label>
+                    <label class="check"><input type="checkbox" name="extras" value="clinic">Clínic con entrenadores</label>
+                    <label class="check"><input type="checkbox" name="extras" value="trofeos">Trofeos personalizados</label>
+                  </div>
+                </fieldset>
+              </div>
+            </fieldset>
+
+            <!-- step 3 -->
+            <fieldset class="q-step" data-q-step="3" hidden>
+              <legend class="t-h4 q-step__legend">¿A quién enviamos la propuesta?</legend>
+              <div class="form-grid form-grid--2">
+                <div class="field">
+                  <label class="field__label" for="q-company">Nombre de la empresa</label>
+                  <input class="field__control" id="q-company" name="company" autocomplete="organization" required>
+                  <p class="field__error">Indica el nombre de la empresa.</p>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="q-contact">Persona de contacto</label>
+                  <input class="field__control" id="q-contact" name="contact" autocomplete="name" required>
+                  <p class="field__error">Indica una persona de contacto.</p>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="q-email">Email corporativo</label>
+                  <input class="field__control" id="q-email" name="email" type="email" autocomplete="email" inputmode="email" required data-corporate>
+                  <p class="field__error">Usa un email de empresa (no Gmail, Hotmail…).</p>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="q-phone">Teléfono</label>
+                  <input class="field__control" id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+                  <p class="field__error">Introduce un teléfono válido.</p>
+                </div>
+                <div class="field span-2">
+                  <label class="field__label" for="q-notes">Algo más que debamos saber (opcional)</label>
+                  <textarea class="field__control" id="q-notes" name="notes" rows="3"></textarea>
+                </div>
+                <label class="check span-2" data-consent><input type="checkbox" name="consent" required>Acepto la política de privacidad y que Volea Club me contacte sobre esta solicitud.</label>
+              </div>
+            </fieldset>
+
+            <div class="q-success" data-q-success hidden tabindex="-1">
+              <div class="confirm__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-check"/></svg></div>
+              <h3 class="t-h3">Solicitud recibida.</h3>
+              <p class="t-body">Nuestra responsable de eventos te enviará una propuesta en menos de 24 h laborables. Referencia: <b class="t-num" data-q-ref></b></p>
+              <button class="btn btn--secondary" type="button" data-open-dossier>Mientras tanto, descarga el dossier</button>
+            </div>
+
+            <div class="quote__foot" data-q-foot>
+              <button class="btn btn--secondary" type="button" data-q-prev hidden><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-left"/></svg>Atrás</button>
+              <span class="t-small t-muted" data-q-counter>Paso 1 de 3</span>
+              <button class="btn btn--dark" type="button" data-q-next>Continuar <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="quote__aside">
+          <div class="dossier card card--inverse">
+            <img class="dossier__img" src="assets/img/dossier.webp" width="640" height="868" alt="Portada del dossier corporativo de Volea Club" loading="lazy" decoding="async" data-dossier-img>
+            <div class="stack">
+              <p class="eyebrow">Dossier B2B · PDF · 4 págs.</p>
+              <h3 class="t-h4">Espacios, formatos, tarifas y casos reales.</h3>
+              <button class="btn btn--primary btn--block" type="button" data-open-dossier><svg class="icon icon--sm" aria-hidden="true"><use href="#i-download"/></svg>Descargar dossier</button>
+            </div>
+          </div>
+          <div class="contact-card card card--muted">
+            <span class="avatar">IV</span>
+            <div class="stack">
+              <div><b>Irene Vidal</b><p class="t-small t-muted">Responsable de eventos</p></div>
+              <a class="contact-line" href="tel:+34965000000"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg><span class="t-num">965 000 000</span></a>
+              <a class="contact-line" href="mailto:eventos@voleaclub.es"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"/></svg>eventos@voleaclub.es</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =============== FAQ =============== -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="stack faq__head" data-reveal>
+          <p class="eyebrow" data-reveal-item>Ayuda</p>
+          <h2 class="t-h2" id="faq-title" data-reveal-item>¿Dudas? Te las resolvemos.</h2>
+          <p class="t-body" data-reveal-item>¿No encuentras la respuesta? Escríbenos por <a class="btn--link" href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a>.</p>
+        </div>
+        <div class="accordion" data-accordion>
+          <div class="acc-item" data-open="true">
+            <h3><button class="acc-item__q" type="button" aria-expanded="true" aria-controls="faq-1" id="faq-q1">¿Cómo reservo una pista?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-1" role="region" aria-labelledby="faq-q1"><div><p>Elige deporte, fecha y hora en el buscador, toca un hueco libre y paga. No necesitas cuenta: te llega el QR de acceso por email y WhatsApp al instante.</p></div></div>
+          </div>
+          <div class="acc-item" data-open="false">
+            <h3><button class="acc-item__q" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-q2">¿Necesito ser socio para jugar?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-2" role="region" aria-labelledby="faq-q2" hidden><div><p>No. Cualquiera puede reservar. Los socios tienen horas incluidas, reservan con más antelación y pagan menos por las horas extra.</p></div></div>
+          </div>
+          <div class="acc-item" data-open="false">
+            <h3><button class="acc-item__q" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-q3">¿Cuál es la política de cancelación?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-3" role="region" aria-labelledby="faq-q3" hidden><div><p>La cancelación es gratuita hasta 24 h antes desde el enlace de tu email. Si cancelas después, te devolvemos el 50% solo si la pista se vuelve a reservar.</p></div></div>
+          </div>
+          <div class="acc-item" data-open="false">
+            <h3><button class="acc-item__q" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-q4">¿Puedo alquilar pala y pelotas?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-4" role="region" aria-labelledby="faq-q4" hidden><div><p>Sí, en recepción: pala 3 €, raqueta de tenis 4 € y bote de pelotas nuevas 6 €. También puedes añadirlo al pagar.</p></div></div>
+          </div>
+          <div class="acc-item" data-open="false">
+            <h3><button class="acc-item__q" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-q5">¿Con cuánta antelación debo pedir un evento de empresa?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-5" role="region" aria-labelledby="faq-q5" hidden><div><p>Recomendamos de 3 a 4 semanas para eventos con catering y de 2 semanas para torneos. Para más de 100 asistentes, mejor con 6 semanas.</p></div></div>
+          </div>
+          <div class="acc-item" data-open="false">
+            <h3><button class="acc-item__q" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-q6">¿Emitís factura a empresa?<span class="acc-item__icon" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-plus"/></svg></span></button></h3>
+            <div class="acc-item__a" id="faq-6" role="region" aria-labelledby="faq-q6" hidden><div><p>Sí. Para eventos trabajamos con factura y transferencia a 30 días, y para reservas sueltas puedes pedir la factura desde el email de confirmación.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== CLOSING CTA =============== -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__frame">
+        <img class="cta__img" src="assets/img/cta-night.webp" srcset="assets/img/cta-night-800.webp 800w, assets/img/cta-night.webp 1376w" sizes="100vw" width="1376" height="768" alt="" loading="lazy" decoding="async">
+        <div class="cta__content" data-reveal>
+          <h2 class="t-display" id="cta-title" data-reveal-item>Nos vemos en la pista.</h2>
+          <p class="t-lead" data-reveal-item>Quedan <b class="t-num" data-live-count>–</b> huecos libres hoy.</p>
+          <div class="row" data-reveal-item>
+            <button class="btn btn--primary btn--lg" type="button" data-open-booking>Reservar pista</button>
+            <a class="btn btn--ghost-inverse btn--lg" href="#presupuesto">Organizar un evento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer section--inverse">
+    <div class="container footer__grid">
+      <div class="stack">
+        <a class="brand" href="#inicio">
+          <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" style="fill:var(--accent)"/><path d="M8 9l6 11 6-11" fill="none" style="stroke:var(--on-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Volea<sup>CLUB</sup>
+        </a>
+        <p class="t-small t-muted">Av. de la Volea 12, 03016 Alicante<br>Lun–Dom · 07:00–23:00</p>
+      </div>
+      <nav class="footer__col" aria-label="Club"><p class="t-caption t-muted">Club</p><a href="#servicios">Servicios</a><a href="#reservar">Disponibilidad</a><a href="#escuela">Escuela</a><a href="#planes">Membresías</a></nav>
+      <nav class="footer__col" aria-label="Empresas"><p class="t-caption t-muted">Empresas</p><a href="#empresas">Eventos</a><a href="#presupuesto">Presupuesto</a><button type="button" data-open-dossier>Dossier PDF</button></nav>
+      <nav class="footer__col" aria-label="Contacto"><p class="t-caption t-muted">Contacto</p><a href="tel:+34965000000">965 000 000</a><a href="mailto:hola@voleaclub.es">hola@voleaclub.es</a><a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a></nav>
+    </div>
+    <div class="container footer__legal t-caption t-muted">
+      <span>© 2026 Volea Club Deportivo S.L.</span>
+      <span><a href="#">Privacidad</a> · <a href="#">Cookies</a> · <a href="#">Condiciones de reserva</a></span>
+    </div>
+  </footer>
+  </div><!-- /#app-scroll -->
+
+  <!-- ================= Mobile bottom tab bar ================= -->
+  <nav class="tabbar" aria-label="Navegación principal">
+    <a class="tabbar__item" href="#inicio" data-tab="inicio" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg>Inicio</a>
+    <a class="tabbar__item" href="#reservar" data-tab="reservar"><svg class="icon" aria-hidden="true"><use href="#i-court"/></svg>Pistas</a>
+    <button class="tabbar__item tabbar__item--primary" type="button" data-open-booking><span class="tabbar__bubble"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>Reservar</button>
+    <a class="tabbar__item" href="#planes" data-tab="planes"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg>Planes</a>
+    <a class="tabbar__item" href="#empresas" data-tab="empresas"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Empresas</a>
+  </nav>
+
+  <!-- ================= Overlays (modal ⇄ bottom sheet) ================= -->
+  <div class="overlay" id="booking" role="dialog" aria-modal="true" aria-labelledby="booking-title" hidden data-overlay>
+    <div class="overlay__scrim" data-close></div>
+    <div class="panel panel--wide" data-panel>
+      <div class="panel__grabber" aria-hidden="true"></div>
+      <div class="panel__head">
+        <div class="panel__titlebar">
+          <h2 class="t-h4" id="booking-title" data-bk-title>Elige pista y hora</h2>
+          <button class="panel__close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+        </div>
+        <div data-bk-stepper-wrap>
+          <div class="stepper" aria-hidden="true" data-bk-stepper><span class="stepper__seg is-active"></span><span class="stepper__seg"></span><span class="stepper__seg"></span></div>
+          <div class="stepper-labels" data-bk-labels><span class="is-active">Pista</span><span>Pago</span><span>Confirmación</span></div>
+        </div>
+      </div>
+      <div class="panel__body" data-bk-body></div>
+      <div class="panel__foot" data-bk-foot></div>
+    </div>
+  </div>
+
+  <div class="overlay overlay--drawer" id="dossier" role="dialog" aria-modal="true" aria-labelledby="dossier-title" hidden data-overlay>
+    <div class="overlay__scrim" data-close></div>
+    <div class="panel" data-panel>
+      <div class="panel__grabber" aria-hidden="true"></div>
+      <div class="panel__head">
+        <div class="panel__titlebar">
+          <h2 class="t-h4" id="dossier-title">Descarga el dossier B2B</h2>
+          <button class="panel__close" type="button" data-close aria-label="Cerrar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+        </div>
+      </div>
+      <div class="panel__body">
+        <form class="stack dossier-form" data-dossier-form novalidate>
+          <div class="dossier-form__preview">
+            <img src="assets/img/dossier.webp" width="640" height="868" alt="" loading="lazy" decoding="async">
+            <ul class="t-small">
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Formatos y tarifas 2026</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Planos de terraza y sala</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Menús de catering</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Opciones de patrocinio</li>
+            </ul>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d-email">Email corporativo</label>
+            <input class="field__control" id="d-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@empresa.com" required data-corporate>
+            <p class="field__error">Usa un email de empresa (no Gmail, Hotmail…).</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d-company">Empresa (opcional)</label>
+            <input class="field__control" id="d-company" name="company" autocomplete="organization">
+          </div>
+          <label class="check" data-consent><input type="checkbox" name="consent" required>Acepto recibir el dossier y comunicaciones de eventos de Volea Club.</label>
+          <button class="btn btn--primary btn--block btn--lg" type="submit"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-download"/></svg>Descargar PDF</button>
+          <p class="secure-note"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-lock"/></svg>Solo lo usaremos para enviarte el dossier y propuestas. Sin spam.</p>
+        </form>
+        <div class="q-success" data-dossier-success hidden tabindex="-1">
+          <div class="confirm__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-check"/></svg></div>
+          <h3 class="t-h3">Tu descarga ha empezado.</h3>
+          <p class="t-body">También te lo hemos enviado por email. ¿Quieres un presupuesto ya?</p>
+          <a class="btn btn--dark" href="#presupuesto" data-close>Pedir presupuesto</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-region" aria-live="polite" data-toasts></div>
+</body>
+</html>
